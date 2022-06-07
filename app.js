@@ -28,13 +28,25 @@ app.use('/static', express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
+global.target = process.env.Target;
+
 const options = {
-  url: process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007&immunization.target=HPV&date.from=1900-01-01&date.to=9999-12-31&_include=Immunization%3Apatient',
+  url: process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007&immunization.target=' + global.target + '&date.from=1900-01-01&date.to=9999-12-31&_include=Immunization%3Apatient',
   headers: {
               'accept': 'application/fhir+json',
               'Authorization': 'Bearer ' + process.env.Bearer
   }
 }
+
+/*
+const options = {
+  url: process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007',
+  headers: {
+              'accept': 'application/fhir+json',
+              'Authorization': 'Bearer ' + process.env.Bearer
+  }
+}
+*/
 
 function callback(error, response, body) {
   if (!error && response.statusCode == 200) {
