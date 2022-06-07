@@ -29,12 +29,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 const options = {
-  url: 'https://demo3631513.mockable.io/FHIR/R4/Immunization%3Fpatient.identifier=https://fhir.nhs.uk/Id/nhs-number%7C9000000009&procedure-code:below=90640007',
+  url: process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007&immunization.target=HPV&date.from=1900-01-01&date.to=9999-12-31&_include=Immunization%3Apatient',
   headers: {
               'accept': 'application/fhir+json',
-              'Authorization': 'Bearer ' + process.env.Bearer,
-              'fromASID': '200000000117',
-              'toASID': '999999999999'
+              'Authorization': 'Bearer ' + process.env.Bearer
   }
 }
 
@@ -94,10 +92,8 @@ for (i = 0; i <= numberOfResources; i++) {
       console.log("NHS Number: " + nhsnumber );
       console.log("DOB: " + patDOB1 );
     }
-
+ 
   }
-
-
 
    }
   else {
