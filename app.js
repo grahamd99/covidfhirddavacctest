@@ -90,9 +90,6 @@ for (i = 0; i <= numberOfResources; i++) {
       global.vaccineCodeSNOMED[i]       = info.entry[i].resource.vaccineCode.coding[0].code;
       global.vaccineCodeDisplay[i]      = info.entry[i].resource.vaccineCode.coding[0].display;
 
-      //console.log("SNOMED code: " + info.entry[i].resource.extension[0].valueCodeableConcept.coding[0].code);
-      //console.log("SNOMED display: " + info.entry[i].resource.extension[0].valueCodeableConcept.coding[0].display);
-
       console.log("Immcounter " + immCounter);
 
     }
@@ -104,7 +101,7 @@ for (i = 0; i <= numberOfResources; i++) {
       console.log("NHS Number: " + nhsnumber );
       console.log("DOB: " + patDOB1 );
     }
- 
+
   }
 
    }
