@@ -30,8 +30,15 @@ app.set("view engine", "ejs");
 
 global.target = process.env.Target;
 
+/* commenting this line out until Sandbox supports immunization.target request parameter
+theUrl = process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007&immunization.target=' + global.target + '&date.from=1900-01-01&date.to=9999-12-31&_include=Immunization%3Apatient';
+*/
+
+theUrl = process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007' + '&date.from=1900-01-01&date.to=9999-12-31&_include=Immunization%3Apatient';
+console.log("theUrl= " + theUrl);
+
 const options = {
-  url: process.env.Base_Url + '/FHIR/R4/Immunization?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C' + process.env.NHSNumber + '&procedure-code%3Abelow=90640007&immunization.target=' + global.target + '&date.from=1900-01-01&date.to=9999-12-31&_include=Immunization%3Apatient',
+  url: theUrl,
   headers: {
               'accept': 'application/fhir+json',
               'Authorization': 'Bearer ' + process.env.Bearer
