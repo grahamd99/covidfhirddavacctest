@@ -28,6 +28,18 @@
 <P> vacc number <%= [i+1] %>
 <table>
   <tr>
+    <td>identifier (system)</td>
+    <td><%= identifierSystem[i] %></td>
+  </tr>
+  <tr>
+    <td>identifier (value)</td>
+    <td><%= identifierValue[i] %></td>
+  </tr>
+  <tr>
+    <td>status</td>
+    <td><%= status[i] %></td>
+  </tr>
+  <tr>
     <td>vaccineProcedure (SNOMED)</td>
     <td><%= vaccineProcedureCode[i] %></td>
   </tr>
@@ -43,6 +55,18 @@
   <tr>
     <td>vaccineCode (Display)</td>
     <td><%= vaccineCodeDisplay[i] %></td>
+  </tr>
+  <tr>
+    <td>occurrenceDateTime</td>
+    <td><%= occurrenceDateTime[i] %></td>
+  </tr>
+  <tr>
+    <td>recorded</td>
+    <td><%= recorded[i] %></td>
+  </tr>
+  <tr>
+    <td>primarySource</td>
+    <td><%= primarySource[i] %></td>
   </tr>
 <table>
 <% } %>

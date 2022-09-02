@@ -60,10 +60,16 @@ console.log("numberOfResources : " + numberOfResources);
 //console.log("type : " + typeof numberOfResources);
 
 global.immCounter = 0;
+global.identifierSystem = [];
+global.identifierValue = [];
+global.status = [];
 global.vaccineProcedureCode = [];
 global.vaccineProcedureDisplay = [];
 global.vaccineCodeSNOMED = []; 
 global.vaccineCodeDisplay = []; 
+global.occurrenceDateTime = [];
+global.recorded = [];
+global.primarySource = [];
 
 for (i = 0; i <= numberOfResources; i++) {
 
@@ -81,10 +87,16 @@ for (i = 0; i <= numberOfResources; i++) {
 
       console.log("i is " + i );
 
+      global.identifierSystem[i]        = info.entry[i].resource.identifier[0].system;
+      global.identifierValue[i]         = info.entry[i].resource.identifier[0].value;
+      global.status[i]                  = info.entry[i].resource.status;
       global.vaccineProcedureCode[i]    = info.entry[i].resource.extension[0].valueCodeableConcept.coding[0].code;   
       global.vaccineProcedureDisplay[i] = info.entry[i].resource.extension[0].valueCodeableConcept.coding[0].display;
       global.vaccineCodeSNOMED[i]       = info.entry[i].resource.vaccineCode.coding[0].code;
       global.vaccineCodeDisplay[i]      = info.entry[i].resource.vaccineCode.coding[0].display;
+      global.occurrenceDateTime[i]      = info.entry[i].resource.occurrenceDateTime;
+      global.recorded[i]                = info.entry[i].resource.recorded;
+      global.primarySource[i]           = info.entry[i].resource.primarySource;
 
       console.log("Immcounter " + immCounter);
 
